@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Player</title>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="card shadow-lg rounded">
+            <img id="music-image" class="card-img-top" src="" alt="">
+            <audio id="audio" src="" class=""></audio>
+            <div class="music-details text-center border-bottom my-3">
+                <p class="title"></p>
+                <!-- <p class="singer"></p> -->
+            </div>
+            <div class="card-body">
+                <div class="progress-content">
+                    <input type="range" name="" id="progress-bar" class="form-range">
+                    <div class="times">
+                        <span id="current-time">0:00</span>
+                        <span id="duration">0:00</span>
+                    </div>
+                </div>
+                <div class="controls text-center">
+                    <div class="control-music">
+                        <button id="prev" class="btn btn-primary rounded-circle">
+                            <i class="fa-solid fa-angles-left"></i>
+                        </button>
+                        <button id="play" class="btn btn-primary rounded-circle btn-lg mx-2">
+                            <i class="fa-solid fa-play"></i>
+                        </button>
+                        <button id="next" class="btn btn-primary rounded-circle">
+                            <i class="fa-solid fa-angles-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <button class="btn btn-primary btn-sm"  data-bs-toggle="collapse" data-bs-target="#music-list" >
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+                <div class="volume-container">
+                    <i id="volume" class="fa-solid fa-volume-high"></i>
+                    <input type="range" id="volume-bar" max="100" value="100" class="form-range">
+                </div>
+            </div>
+            <div id="music-list" class="collapse show">
+                <ul id="music-list-content" class="list-group list-group-flush">
+                    <!-- <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <span>Boşver - Nilufer</span>
+                        <span class="badge bg-primary rounded-pill"> 3:40 </span>
+                    </li> -->
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/music.js"></script>
+    <script src="js/musicplayer.js"></script>
+    <script src="js/index.js"></script>
+    <script src="https://sdk.scdn.co/spotify-player.js"></script>
+<script>
+window.onSpotifyWebPlaybackSDKReady = () => {
+  const userAccessToken = "[access token]";
+  const webPlayback = new Spotify.Player({
+    name: "Spotify Web Playback SDK",
+    getOAuthToken: callback => { callback(userAccessToken)}
+  });
+  webPlayback.connect();
+};
+</script>
+
+</body>
+
+</html>
